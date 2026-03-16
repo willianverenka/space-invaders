@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;  
   
 public class ControladorJogo : MonoBehaviour  
-{  
+{
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void SetWindowedOnLoad()
+    {
+        Screen.SetResolution(672, 1194, false);
+    }
+
     private float velocidadeInicial = .05f;  
     private float velocidadeMaxima = .4f;  
     public int pontuacao = 0;  
@@ -19,8 +25,8 @@ public class ControladorJogo : MonoBehaviour
     private GameObject[,] gridInimigos;  
     public static ControladorJogo Controlador;  
       
-    public float margemTopo = 1.5f;      // Reserved space for UI score at top  
-    public float offsetDificuldade = 0f; // Increase this each level to push grid down (harder)  
+    public float margemTopo = 1.5f;   
+    public float offsetDificuldade = 0f;
       
     public TextMeshProUGUI textoPontuacao;  
   
